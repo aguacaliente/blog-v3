@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from xml.sax import default_parser_list
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
@@ -26,13 +27,17 @@ POSTS = [
     'id' : 4,
     'title': 'React and CSS ',
     'author': 'Betty Swallocks',
-    'tagline': 'author of getting laid a nerds guide'
+    'tagline': 'Common pitfalls when styling components in react'
 },
     ]
 @app.route("/")
 def hello_world():
     return render_template('home.html',
                            posts=POSTS)
+    
+@app.route("/api/posts")
+def list_posts():
+    return jsonify(POSTS)
 
 
 

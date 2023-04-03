@@ -1,14 +1,22 @@
-<div style ="margin-bottom: 16px;">
-    <h4 style="color:rgba(120, 120, 120, 0.603); margin-bottom:4px;">
+<div class="border-bottom row" style="margin-bottom: 16px; padding-bottom: 8px;">
+    <div class="col-9">
+      <h4 style="color: rgba(120, 120, 120, 0.603); margin-bottom: 4px">
         {{post['title']}}
-    </h4>
+      </h4>
+  
+      <div>
+        <b>Author:</b> {{post['author']}}
+      </div>
+      
+      {% if 'tagline' is in post %}
+        <div>
+          <p>{{post['tagline']}}</p>
+        </div>
+      {% endif %}
     </div>
- <div>
-    <p class ="lead">Author: {{post['author']}}</p>
-  </div class="mt-0 mb-2">  
-  {% if 'tagline' is in post %}
-    <div>
-     
-        <p>{{post['tagline']}}</p>
-        {% endif %}
- </div>
+  
+    <div class="col-3">
+      <button type="button" class="btn btn-secondary">Read</button>
+    </div>
+  </div>
+  

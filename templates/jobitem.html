@@ -1,0 +1,14 @@
+<div style ="margin-bottom: 16px;">
+    <h4 style="color:rgba(120, 120, 120, 0.603); margin-bottom:4px;">
+        {{post['title']}}
+    </h4>
+    </div>
+ <div>
+    <p class ="lead">Author: {{post['author']}}</p>
+  </div class="mt-0 mb-2">  
+  {% if 'tagline' is in post %}
+    <div>
+     
+        <p>{{post['tagline']}}</p>
+        {% endif %}
+ </div>

@@ -26,7 +26,13 @@
     Deleniti animi iste reprehenderit veritatis recusandae suscipit tenetur vero ea nihil!</p>
 
     <h2 class="text-center mt-2">Blog posts</h2>
-    <p>blog content to do</p>
+    <div>
+        {% for post in posts %}
+        {% include 'jobitem.html' %}
+        
+        
+        {% endfor %}
+    </div>
         <div class = "d-grid gap-2 col-6 mx-auto">
     <button type ="button" class="btn btn-outline-primary">Get in touch</button>
         </div>

@@ -29,13 +29,19 @@ POSTS = [
     'author': 'Betty Swallocks',
     'tagline': 'Common pitfalls when styling components in react'
 },
+    {
+    'id' : 5,
+    'title': 'React and CSS ',
+    'author': 'Betty Swallocks',
+    'tagline': 'Common pitfalls when styling components in react'
+},
     ]
 @app.route("/")
 def hello_world():
     return render_template('home.html',
                            posts=POSTS)
     
-@app.route("/api/posts")
+@app.route("/posts")
 def list_posts():
     return jsonify(POSTS)
 

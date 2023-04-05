@@ -1,51 +1,33 @@
 from xml.sax import default_parser_list
 from flask import Flask, render_template, jsonify
+from database import load_posts_from_db
+
 
 app = Flask(__name__)
 
 
-POSTS = [
-    {
-    'id' : 1,
-    'title': 'Quicker CSS with Bootstrap ',
-    'author': 'John Doe',
-    'tagline': ''
-},
-    {
-    'id' : 2,
-    'title': 'API endpoints ',
-    'author': 'Jane Doe',
-    'tagline': ''
-},
-    {
-    'id' : 3,
-    'title': 'React and CSS ',
-    'author': 'Jane Doe',
-    'tagline': ''
-},
-    {
-    'id' : 4,
-    'title': 'React and CSS ',
-    'author': 'Betty Swallocks',
-    'tagline': 'Common pitfalls when styling components in react'
-},
-    {
-    'id' : 5,
-    'title': 'React and CSS ',
-    'author': 'Betty Swallocks',
-    'tagline': 'Common pitfalls when styling components in react'
-},
-    ]
+# def load_posts_from_db():
+# with engine.connect() as connection:
+# result = connection.execute(text("SELECT * FROM posts"))
+
+# posts = []
+# for row in result.all():
+# posts.append(dict(row))
+# return posts
+
+
 @app.route("/")
 def hello_world():
+    posts = load_posts_from_db()
     return render_template('home.html',
-                           posts=POSTS)
-    
-@app.route("/posts")
-def list_posts():
-    return jsonify(POSTS)
+                           posts=posts)
 
+
+@app.route("/api/posts")
+def list_posts():
+    posts = load_posts_from_db()
+    return jsonify(posts)
 
 
 if __name__ == "__main__":
-    app.run(host = "localhost", port =8080, debug=True)
+    app.run(host="localhost", port=8080, debug=True)

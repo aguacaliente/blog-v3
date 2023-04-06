@@ -1,13 +1,11 @@
 from xml.sax import default_parser_list
 from flask import Flask, render_template, jsonify
 from database import load_posts_from_db, load_post_from_db
-from dotenv import load_dotenv
-import os
+
 
 
 app = Flask(__name__)
-load_dotenv()
-os.environ.get('DB_CONNECTION_STRING')
+
 
 
 # def load_posts_from_db():

@@ -7,7 +7,10 @@ import os
 from dotenv import load_dotenv
 
 
-os.environ.get('DB_CONNECTION_STRING')
+load_dotenv()
+os.getenv('DB_CONNECTION_STRING')
+
+db_connection_string = os.environ['DB_CONNECTION_STRING']
 
 
 engine = create_engine(

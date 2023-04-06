@@ -7,6 +7,7 @@ import os
 
 app = Flask(__name__)
 load_dotenv()
+os.environ.get('DB_CONNECTION_STRING')
 
 
 # def load_posts_from_db():

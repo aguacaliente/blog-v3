@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-os.getenv('DB_CONNECTION_STRING')
+DB_CONNECTION_STRING= os.getenv.get('DB_CONNECTION_STRING')
 
 db_connection_string = os.environ['DB_CONNECTION_STRING']
 

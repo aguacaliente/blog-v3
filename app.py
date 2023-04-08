@@ -1,4 +1,5 @@
 from crypt import methods
+from email.mime import application
 from xml.sax import default_parser_list
 from flask import Flask, render_template, jsonify, request
 from database import load_posts_from_db, load_post_from_db
@@ -42,7 +43,10 @@ def show_post(id):
 @app.route("/post/<id>/comment", methods =['post'])
 def send_comment(id):
     data = request.form
-    return jsonify(data)
+    return render_template('comment_submitted.html', 
+                           comment=data)
+
+
 
 
 if __name__ == "__main__":

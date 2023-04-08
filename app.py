@@ -1,5 +1,6 @@
+from crypt import methods
 from xml.sax import default_parser_list
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from database import load_posts_from_db, load_post_from_db
 
 
@@ -33,7 +34,15 @@ def list_posts():
 @app.route("/post/<id>")
 def show_post(id):
     post = load_post_from_db(id)
-    return jsonify(post)
+    if not post:
+        return "No post found", 404
+    return render_template('postpage.html', 
+                           post=post)
+    
+@app.route("/post/<id>/comment", methods =['post'])
+def send_comment(id):
+    data = request.form
+    return jsonify(data)
 
 
 if __name__ == "__main__":
